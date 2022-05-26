@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,7 +35,21 @@ public class UIManager : MonoBehaviour
 
 	//Reloads the Level
 	public void Reload(){
-    		Application.LoadLevel(Application.loadedLevel);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	// Quit Game
+	public void QuitGame(){
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit ();
+#endif
+	}
+
+	// Loads Title scene
+	public void LoadTitleScene(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 
 	//controls the pausing of the scene
@@ -61,10 +76,5 @@ public class UIManager : MonoBehaviour
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
 		}
-	}
-
-	//loads inputted level
-	public void LoadLevel(string level){
-		Application.LoadLevel(level);
 	}
 }

@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b874e84625392694a8222d941fcc7449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 3
+  forceStrength: 5
   pendingTime: 0
   period: 0.1
